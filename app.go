@@ -10,6 +10,7 @@ import (
 
 func main() {
 
+	beego.SetStaticPath("/doc", "./doc")
 	beego.Router("/", &handlers.MainHandler{})
 	/*
 		beego.Router("/topic/:tid([0-9]+)", &handlers.TopicHandler{})

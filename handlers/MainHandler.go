@@ -3,7 +3,7 @@ package handlers
 import (
 	"github.com/insionng/veryhour/libs"
 	//"../models"
-	//"../utils"
+	"github.com/insionng/veryhour/utils"
 )
 
 type MainHandler struct {
@@ -12,6 +12,9 @@ type MainHandler struct {
 
 func (self *MainHandler) Get() {
 
-	self.TplNames = "index.html"
+	self.TplNames = "default.html"
+	content, _ := self.BaseHandler.RenderString()
+	utils.WriteFile("./doc/", "default.html", content)
+	self.Redirect("/doc/default.html", 302)
 
 }
