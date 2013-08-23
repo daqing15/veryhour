@@ -1,10 +1,10 @@
 package models
 
 import (
-	"github.com/insionng/veryhour/utils"
 	"errors"
 	"fmt"
 	_ "github.com/bylevel/pq"
+	"github.com/insionng/veryhour/utils"
 	"github.com/lunny/xorm"
 	"os"
 	//_ "github.com/mattn/go-sqlite3"
@@ -172,11 +172,10 @@ type Kvs struct {
 	V string
 }
 
-//Subscribe 订阅之邮件列表
-type Subscribe struct {
+type Timeline struct {
 	Id      int64
-	Email   string
-	Ctype   int64 //0为接受订阅，1为用户取消订阅。
+	Ctype   int64
+	Content string
 	Created time.Time
 }
 
@@ -190,7 +189,7 @@ func init() {
 	Engine.CreateTables(&Reply{})
 	Engine.CreateTables(&Kvs{})
 	Engine.CreateTables(&File{})
-	Engine.CreateTables(&Subscribe{})
+	Engine.CreateTables(&Timeline{})
 
 	defer Engine.Close()
 }
